@@ -1,6 +1,43 @@
 'use strict';
 
 /* ============================================================
+   Preset collections
+   ------------------------------------------------------------
+   Loaded at startup from assets/presets.json. Each collection
+   has a stable short CODE, so everyone who picks the same set
+   lands on the same board — no long share link needed. The code
+   IS the board. (A hidden "custom" flow still exists at
+   #/create/custom and encodes its word list into the link.)
+   ============================================================ */
+let PRESET_GROUPS = [];   // [{ name, collections: [{ code, title, freeSpace, words }] }]
+let PRESET_BY_CODE = {};  // CODE -> collection
+
+function indexPresets(groups) {
+  PRESET_GROUPS = Array.isArray(groups) ? groups : [];
+  PRESET_BY_CODE = {};
+  PRESET_GROUPS.forEach(g => (g.collections || []).forEach(c => {
+    if (c && c.code) PRESET_BY_CODE[c.code.toUpperCase()] = c;
+  }));
+}
+
+function loadPresets() {
+  return fetch('assets/presets.json', { cache: 'no-cache' })
+    .then(r => r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status)))
+    .then(data => indexPresets(data.groups))
+    .catch(() => indexPresets([]));
+}
+
+function boardFromPreset(c) {
+  return {
+    title: c.title,
+    words: c.words.slice(),
+    freeSpace: !!c.freeSpace,
+    createdAt: Date.now(),
+    preset: c.code
+  };
+}
+
+/* ============================================================
    Storage
    ============================================================ */
 const CHARSET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // no 0/O/1/I to avoid mix-ups
@@ -37,7 +74,7 @@ function saveCard(seed, card) {
 }
 
 /* ============================================================
-   Seed + shareable data encoding
+   Seed + shareable data encoding (used by the hidden custom flow)
    ============================================================ */
 function genSeed() {
   const arr = new Uint32Array(4);
@@ -161,11 +198,11 @@ function renderHome() {
   const wrap = h('div', { class: 'view home' },
     h('div', { class: 'topband' },
       h('div', { class: 'title' }, 'ROAD TRIP ', h('span', { class: 'accent' }, 'BINGO')),
-      h('div', { class: 'subtitle' }, 'Make a board · share the code · fill your card')
+      h('div', { class: 'subtitle' }, 'Pick a collection · share the code · fill your card')
     ),
     h('div', { class: 'actions' },
-      h('a', { class: 'btn btn-primary', href: '#/create' }, '+ Create New Board'),
-      h('a', { class: 'btn btn-secondary', href: '#/join' }, 'Join a Board')
+      h('a', { class: 'btn btn-primary', href: '#/create' }, 'Choose a Collection'),
+      h('a', { class: 'btn btn-secondary', href: '#/join' }, 'Join with a Code')
     )
   );
 
@@ -187,7 +224,7 @@ function renderHome() {
             h('a', { class: 'btn btn-small btn-outline', href: '#/board/' + seed }, 'Share'),
             h('button', {
               type: 'button', class: 'btn btn-small btn-danger', onclick: () => {
-                if (confirm('Remove "' + (b.title || 'this board') + '" from this device? Friends who have the link can still play it.')) {
+                if (confirm('Remove "' + (b.title || 'this board') + '" from this device? You can rejoin anytime with its code.')) {
                   removeBoard(seed);
                   renderHome();
                 }
@@ -203,6 +240,40 @@ function renderHome() {
 }
 
 function renderCreate() {
+  clearApp();
+  const wrap = h('div', { class: 'view create' },
+    backHeader('Choose a Collection'),
+    h('p', { class: 'hint' }, 'Pick a set to get your card. Everyone who plays the same collection shares its short code — tell your car-mates the code (or send the link) so they join the same board.')
+  );
+
+  if (!PRESET_GROUPS.length) {
+    wrap.appendChild(h('p', { class: 'hint' }, 'Collections couldn’t load. Check your connection and refresh the page.'));
+  }
+
+  PRESET_GROUPS.forEach(g => {
+    const grid = h('div', { class: 'collection-grid' });
+    (g.collections || []).forEach(c => {
+      grid.appendChild(
+        h('a', { class: 'collection-btn', href: '#/board/' + c.code },
+          h('div', { class: 'collection-name' }, c.title),
+          h('div', { class: 'collection-meta' },
+            h('span', { class: 'collection-code' }, c.code),
+            ' ' + c.words.length + ' to spot'
+          )
+        )
+      );
+    });
+    wrap.appendChild(h('div', { class: 'collection-group' },
+      h('div', { class: 'section-label' }, g.name),
+      grid
+    ));
+  });
+
+  appRoot().appendChild(wrap);
+}
+
+// Hidden custom-board builder — reachable only at #/create/custom.
+function renderCreateCustom() {
   clearApp();
   const titleInput = h('input', { type: 'text', id: 'c-title', maxlength: '60', placeholder: 'e.g. Southwest Road Trip' });
   const freeCheck = h('input', { type: 'checkbox', id: 'c-free', checked: true });
@@ -234,7 +305,7 @@ function renderCreate() {
       }
       const boards = loadBoards();
       let seed = genSeed();
-      while (boards[seed]) seed = genSeed();
+      while (boards[seed] || PRESET_BY_CODE[seed]) seed = genSeed();
       saveBoard(seed, { title, words, freeSpace, createdAt: Date.now() });
       location.hash = '#/board/' + seed;
     }
@@ -250,8 +321,8 @@ function renderCreate() {
   );
 
   const wrap = h('div', { class: 'view create' },
-    backHeader('Create a Board'),
-    h('p', { class: 'hint' }, 'Add more words than you need — each player’s card pulls a random subset in a random order, so cards vary even more.'),
+    backHeader('Custom Board'),
+    h('p', { class: 'hint' }, 'A custom board travels inside its share link (there’s no short code to say out loud), so send the full link to whoever’s playing.'),
     form
   );
   appRoot().appendChild(wrap);
@@ -260,11 +331,14 @@ function renderCreate() {
 
 function renderBoardShare(seed) {
   clearApp();
-  const board = getBoard(seed);
+  let board = getBoard(seed);
+  const preset = PRESET_BY_CODE[seed];
+  if (!board && preset) { board = boardFromPreset(preset); saveBoard(seed, board); }
   if (!board) { renderMissing(seed); return; }
 
-  const data = encodeData({ t: board.title, w: board.words, f: board.freeSpace });
-  const url = location.origin + location.pathname + '#/play/' + seed + '?d=' + data;
+  const url = preset
+    ? location.origin + location.pathname + '#/play/' + seed
+    : location.origin + location.pathname + '#/play/' + seed + '?d=' + encodeData({ t: board.title, w: board.words, f: board.freeSpace });
 
   const linkBox = h('input', { type: 'text', readonly: true, value: url, onclick: (e) => e.target.select() });
   const copyBtn = h('button', {
@@ -281,11 +355,13 @@ function renderBoardShare(seed) {
   }, 'Copy Link');
 
   const wrap = h('div', { class: 'view share' },
-    backHeader('Board Created!'),
+    backHeader(preset ? board.title : 'Board Created!'),
     h('div', { class: 'code-display' }, seed),
-    h('div', { class: 'code-label' }, 'Board code — say it out loud, and send the link below'),
+    h('div', { class: 'code-label' }, preset
+      ? 'Say this code out loud — anyone who enters it gets this same collection.'
+      : 'Board code — say it out loud, and send the link below'),
     h('div', { class: 'sharebox' }, linkBox, copyBtn),
-    h('p', { class: 'hint' }, 'Anyone who opens the link gets the same word list but their own randomly shuffled card, so everyone plays from a different layout.'),
+    h('p', { class: 'hint' }, 'Everyone gets the same word list but their own randomly shuffled card, so no two boards look alike.'),
     h('div', { class: 'actions' },
       h('a', { class: 'btn btn-primary btn-block', href: '#/play/' + seed }, 'Play This Board'),
       h('a', { class: 'btn btn-secondary btn-block', href: '#/' }, 'Back Home')
@@ -300,49 +376,57 @@ function parseSharedLink(text) {
   const trimmed = text.trim();
   if (/^[A-Za-z0-9]{4}$/.test(trimmed)) {
     const seed = trimmed.toUpperCase();
-    if (getBoard(seed)) return { seed, data: null };
+    if (PRESET_BY_CODE[seed] || getBoard(seed)) return { seed, data: null };
   }
   return null;
 }
 
 function renderJoin() {
   clearApp();
-  const input = h('textarea', { rows: '3', placeholder: 'Paste the board link your friend sent you…' });
+  const input = h('input', {
+    type: 'text', id: 'j-code', maxlength: '4', autocomplete: 'off',
+    autocapitalize: 'characters', spellcheck: 'false', placeholder: 'e.g. PEAK',
+    class: 'code-input'
+  });
+  input.addEventListener('input', () => { input.value = input.value.toUpperCase(); });
   const errorBox = h('div', { class: 'error', style: 'display:none' });
+
   const form = h('form', {
     class: 'card-form', onsubmit: (e) => {
       e.preventDefault();
       errorBox.style.display = 'none';
       const parsed = parseSharedLink(input.value.trim());
       if (!parsed) {
-        errorBox.textContent = 'Couldn’t find a board in that. Paste the full link your friend shared (it contains "#/play/").';
+        errorBox.textContent = 'That code doesn’t match a collection. Double-check the 4 characters (or paste the full link a friend sent).';
         errorBox.style.display = 'block';
         return;
       }
       location.hash = '#/play/' + parsed.seed + (parsed.data ? '?d=' + parsed.data : '');
     }
   },
-    h('label', {}, 'Paste Board Link'),
+    h('label', { for: 'j-code' }, 'Board Code'),
     input,
     errorBox,
     h('button', { type: 'submit', class: 'btn btn-primary btn-block' }, 'Join Board')
   );
+
   const wrap = h('div', { class: 'view join' },
-    backHeader('Join a Board'),
-    h('p', { class: 'hint' }, 'Ask whoever created the board for the link they got — the board code is built right into it.'),
+    backHeader('Join with a Code'),
+    h('p', { class: 'hint' }, 'Enter the 4-character code your car-mates are using (like PEAK, CARS, or FUEL). Got a full link instead? Paste it in — that works too.'),
     form
   );
   appRoot().appendChild(wrap);
+  input.focus();
 }
 
 function renderMissing(seed) {
   clearApp();
   const wrap = h('div', { class: 'view' },
     backHeader('Board Not Found'),
-    h('p', { class: 'hint' }, 'This board (code ' + seed + ') isn’t on this device yet. Ask for the full share link, or use “Join a Board” and paste it in.'),
+    h('p', { class: 'hint' }, 'We couldn’t find a board for code ' + seed + '. Double-check the code, or pick a collection to start a new one.'),
     h('div', { class: 'actions' },
-      h('a', { class: 'btn btn-primary btn-block', href: '#/join' }, 'Join a Board'),
-      h('a', { class: 'btn btn-secondary btn-block', href: '#/' }, 'Back Home')
+      h('a', { class: 'btn btn-primary btn-block', href: '#/create' }, 'Choose a Collection'),
+      h('a', { class: 'btn btn-secondary btn-block', href: '#/join' }, 'Try Another Code')
     )
   );
   appRoot().appendChild(wrap);
@@ -367,7 +451,13 @@ function renderPlay(rawSeed, query) {
         saveBoard(seed, board);
         history.replaceState(null, '', location.pathname + location.search + '#/play/' + seed);
       }
-    } catch (e) { /* ignore malformed data, fall back to stored board (if any) */ }
+    } catch (e) { /* ignore malformed data, fall back to stored/preset board */ }
+  }
+
+  // A known preset code IS the board — rebuild it if it isn't stored yet.
+  if (!board && PRESET_BY_CODE[seed]) {
+    board = boardFromPreset(PRESET_BY_CODE[seed]);
+    saveBoard(seed, board);
   }
 
   if (!board || board.words.length < requiredCount(board.freeSpace)) { renderMissing(seed); return; }
@@ -470,6 +560,7 @@ function route() {
   const parts = path.split('/').filter(Boolean);
 
   if (parts.length === 0) return renderHome();
+  if (parts[0] === 'create' && parts[1] === 'custom') return renderCreateCustom();
   if (parts[0] === 'create') return renderCreate();
   if (parts[0] === 'join') return renderJoin();
   if (parts[0] === 'board' && parts[1]) return renderBoardShare(parts[1].toUpperCase());
@@ -477,5 +568,11 @@ function route() {
   return renderHome();
 }
 
-window.addEventListener('hashchange', route);
-window.addEventListener('DOMContentLoaded', route);
+/* Load presets first, then route (so codes resolve on the first paint). */
+function start() {
+  loadPresets().then(() => {
+    route();
+    window.addEventListener('hashchange', route);
+  });
+}
+window.addEventListener('DOMContentLoaded', start);

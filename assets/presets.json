@@ -1,0 +1,340 @@
+{
+  "groups": [
+    {
+      "name": "Road Trip Classics",
+      "collections": [
+        {
+          "code": "CLSC",
+          "title": "Classic Road Trip",
+          "freeSpace": true,
+          "words": [
+            "Out-of-state license plate", "Water tower", "American flag", "Billboard",
+            "Semi truck", "Motorcycle", "RV / camper", "Police car", "Roadwork / cones",
+            "Bridge", "Tunnel", "Rest area", "Barn", "Cow", "Horse", "Church steeple",
+            "Train", "Airplane overhead", "Dog in a car", "Vanity plate",
+            "Produce stand", "Windmill", "Roadside diner", "Hay bales", "Overpass",
+            "Hitchhiker", "Broken-down car", "Flag on a truck"
+          ]
+        },
+        {
+          "code": "EYES",
+          "title": "Highway I-Spy",
+          "freeSpace": true,
+          "words": [
+            "Bumper sticker", "Roof cargo box", "Bike on a car", "Trailer hitch",
+            "Spare tire on the back", "Convertible with the top down", "Car with one headlight",
+            "Rusty old car", "Brand-new car with paper plate", "Car wash", "Cell tower",
+            "Radio tower with a red light", "Wind turbine", "Grain silo", "Mile marker",
+            "Overpass graffiti", "Toll booth", "State line sign", "Truck weigh station",
+            "Rest area sign", "Roadside memorial", "Fruit / produce stand", "Roadside fireworks stand",
+            "Motel sign", "Flag at half-staff", "Car with a kayak on top"
+          ]
+        },
+        {
+          "code": "SGNS",
+          "title": "Road Signs",
+          "freeSpace": true,
+          "words": [
+            "Speed limit sign", "Stop sign", "Yield sign", "Deer crossing", "Falling rocks",
+            "Merge", "Road work ahead", "Detour", "No passing zone", "One way", "Do not enter",
+            "Railroad crossing", "Slippery when wet", "Runaway truck ramp", "Steep grade",
+            "Rest area", "Weigh station", "Exit number sign", "Mile marker", "HOV lane",
+            "Roundabout ahead", "Tourist attraction sign", "Historical marker",
+            "Welcome to (state) sign", "Speed camera", "Traffic light"
+          ]
+        },
+        {
+          "code": "TAGS",
+          "title": "License-Plate States",
+          "freeSpace": true,
+          "words": [
+            "California", "Texas", "Florida", "New York", "Ohio", "Illinois", "Pennsylvania",
+            "Michigan", "Georgia", "Arizona", "Colorado", "Washington", "Oregon", "Nevada",
+            "Utah", "Tennessee", "Missouri", "Minnesota", "Wisconsin", "Virginia",
+            "Massachusetts", "New Jersey", "North Carolina", "Kansas", "Montana", "Canadian plate"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "On the Road",
+      "collections": [
+        {
+          "code": "CARS",
+          "title": "Vehicles & Traffic",
+          "freeSpace": true,
+          "words": [
+            "Semi truck", "School bus", "Motorcycle", "RV / camper", "Pickup truck",
+            "Convertible", "Sports car", "Police car", "Ambulance", "Fire truck",
+            "Tow truck", "Tractor", "Minivan", "Jeep", "Delivery van", "Tanker truck",
+            "Car pulling a trailer", "City bus", "Food truck", "Classic / vintage car",
+            "Electric car", "Cement mixer", "Garbage truck", "Limousine",
+            "Flatbed truck", "Dump truck", "Car with a roof rack", "Motorhome towing a car"
+          ]
+        },
+        {
+          "code": "HUES",
+          "title": "Car Colors",
+          "freeSpace": true,
+          "words": [
+            "Red car", "Orange car", "Yellow car", "Green car", "Blue car",
+            "Purple car", "Pink car", "Black car", "White car", "Silver car",
+            "Gray car", "Brown car", "Gold car", "Beige / tan car", "Maroon car",
+            "Navy blue car", "Teal car", "Lime green car", "Bright red sports car",
+            "Matte black car", "Two-tone car", "Camo-wrapped car", "Custom / wrapped car",
+            "Bronze / copper car", "Metallic-flake paint"
+          ]
+        },
+        {
+          "code": "TRKS",
+          "title": "Big Rigs & Trucks",
+          "freeSpace": true,
+          "words": [
+            "18-wheeler", "Tanker truck", "Flatbed truck", "Car hauler", "Dump truck",
+            "Cement mixer", "Logging truck", "Livestock trailer", "Box truck",
+            "Refrigerated trailer", "Tow truck", "Garbage truck", "Fire truck",
+            "Semi with a sleeper cab", "Double trailer", "Oversize / wide load",
+            "Chrome exhaust stacks", "UPS truck", "FedEx truck", "Amazon van",
+            "Mail truck", "U-Haul / moving truck", "Truck hauling equipment",
+            "Tractor on a trailer", "Fuel tanker", "Truck with mud flaps"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Nature & Wildlife",
+      "collections": [
+        {
+          "code": "WYLD",
+          "title": "Plants & Animals",
+          "freeSpace": true,
+          "words": [
+            "Cow", "Horse", "Sheep", "Goat", "Deer", "Hawk / bird of prey",
+            "Crows on a wire", "Herd of cattle", "Butterfly", "Wildflowers",
+            "Cornfield", "Sunflowers", "Cactus", "Pine trees", "Palm tree",
+            "Vineyard", "Pumpkin patch", "Llama or alpaca", "Chickens", "Pig",
+            "Pond with ducks", "Squirrel", "Grazing horses", "Wheat field", "Oak tree", "Roadside dog"
+          ]
+        },
+        {
+          "code": "BRDS",
+          "title": "Birds & Sky",
+          "freeSpace": true,
+          "words": [
+            "Hawk on a pole", "Vulture circling", "Crow", "Seagull", "Geese in a V",
+            "Ducks on a pond", "Wild turkey", "Pheasant", "Sparrows on a wire", "Blue jay",
+            "Cardinal", "Eagle", "Great blue heron", "Pigeons", "Swallows",
+            "Airplane", "Jet contrail", "Helicopter", "Hot air balloon", "Kite",
+            "Rainbow", "Flock of blackbirds", "Crescent day moon", "Cloud shaped like something",
+            "Windmill blades turning", "Bird on a fence post"
+          ]
+        },
+        {
+          "code": "FARM",
+          "title": "Farm Country",
+          "freeSpace": true,
+          "words": [
+            "Red barn", "Silo", "Grain elevator", "Tractor", "Combine harvester",
+            "Round hay bales", "Square hay bales", "Cornfield", "Wheat field", "Soybean field",
+            "Cows grazing", "Horses", "Sheep", "Goats", "Pigs", "Chickens", "Scarecrow",
+            "Windmill", "Irrigation sprinkler", "Farm stand", "Pumpkin patch", "Orchard",
+            "Fenced pasture", "Farm pond", "Farmhouse", "Farm pickup truck"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Scenery by Region",
+      "collections": [
+        {
+          "code": "DSRT",
+          "title": "Desert & Southwest",
+          "freeSpace": true,
+          "words": [
+            "Saguaro cactus", "Tumbleweed", "Red rock formation", "Sand dunes",
+            "Dry riverbed", "Mesa or butte", "Dust devil", "Joshua tree", "Lizard",
+            "Windmill", "Adobe building", "Next-services-100-miles sign", "Sagebrush",
+            "Rock arch", "Dry lake bed", "Wind turbines", "Oil pump jack",
+            "Cloudless blue sky", "Distant mountains", "Roadrunner", "Cattle skull",
+            "Border patrol vehicle", "Gravel pull-off", "Heat mirage", "Prickly pear cactus"
+          ]
+        },
+        {
+          "code": "PNWX",
+          "title": "Pacific Northwest",
+          "freeSpace": true,
+          "words": [
+            "Evergreen forest", "Fog or mist", "Waterfall", "Moss-covered trees",
+            "Snow-capped mountain", "River rapids", "Ferry", "Lighthouse", "Rain",
+            "Drive-thru coffee stand", "Logging truck", "Lake", "Kayak or canoe",
+            "Bald eagle", "Covered bridge", "Ferns", "Wooden cabin", "Fishing boat",
+            "Rocky coastline", "Tulip field", "Mushrooms", "Mountain lake", "Deer",
+            "Cyclist in rain gear", "Wind turbine on a ridge"
+          ]
+        },
+        {
+          "code": "PLNS",
+          "title": "Great Plains",
+          "freeSpace": true,
+          "words": [
+            "Grain silo", "Wind turbine", "Cattle", "Round hay bales", "Cornfield",
+            "Wheat field", "Red barn", "Tractor", "Grain elevator", "Water tower",
+            "Windmill", "Road straight to the horizon", "Big open sky", "Freight train",
+            "Combine harvester", "Pronghorn / antelope", "Grain truck",
+            "Endless fence line", "Dirt side road", "Small-town water tower", "Feedlot",
+            "Roadside diner", "Sunflower field", "Pheasant or quail", "Abandoned farmhouse"
+          ]
+        },
+        {
+          "code": "PEAK",
+          "title": "Mountains",
+          "freeSpace": true,
+          "words": [
+            "Switchback road", "Snow-capped peak", "Pine forest", "Scenic overlook",
+            "River or creek", "Waterfall", "Tunnel", "Ski resort sign", "Elk or deer",
+            "Runaway truck ramp", "Falling-rocks sign", "Alpine lake",
+            "Wildflower meadow", "Cabin or lodge", "Chairlift", "Trailhead sign",
+            "Steep grade sign", "Cyclist climbing", "Fog in the valley",
+            "Bridge over a gorge", "Campground sign", "Boulder field", "Evergreen slope",
+            "Mountain goat or bighorn", "Waterfall pull-off"
+          ]
+        },
+        {
+          "code": "WAVE",
+          "title": "Coastal Drive",
+          "freeSpace": true,
+          "words": [
+            "Ocean view", "Sandy beach", "Lighthouse", "Pier", "Sailboat", "Fishing boat",
+            "Seagulls", "Palm trees", "Surfboard", "Pelican", "Dune grass", "Boardwalk",
+            "Seafood shack", "Beach umbrellas", "Tide pools", "Rocky cliffs", "Ferry",
+            "Buoy", "Kite surfer", "Sea wall", "Marina full of boats", "Bridge over water",
+            "Sand dunes", "Waves crashing", "Beach parking lot", "Ice cream stand"
+          ]
+        },
+        {
+          "code": "FALL",
+          "title": "New England & Fall Colors",
+          "freeSpace": true,
+          "words": [
+            "Covered bridge", "Red maple leaves", "Orange foliage", "Stone wall",
+            "White church steeple", "Apple orchard", "Pumpkin stand", "Farm stand",
+            "Lighthouse", "Lobster / seafood shack", "Rocky coast", "Sugar maple",
+            "Hills of fall color", "Country store", "Barn with a silo", "Corn maze sign",
+            "Fall wreath on a door", "Leaf pile", "Mountain overlook", "Foggy morning",
+            "Village green", "Cider mill", "Fishing pier", "Colonial house",
+            "Old cemetery", "Roadside pumpkins"
+          ]
+        },
+        {
+          "code": "BAYU",
+          "title": "Deep South & Bayou",
+          "freeSpace": true,
+          "words": [
+            "Spanish moss", "Cypress trees", "Swamp or bayou", "Cotton field", "Pecan grove",
+            "Magnolia tree", "Front porch with rockers", "Country church", "Boiled peanuts sign",
+            "BBQ joint", "Fireworks stand", "Peach stand", "Alligator crossing sign",
+            "Egret or heron", "Cattle egret on a cow", "Pine forest", "Kudzu-covered trees",
+            "Fishing boat on a trailer", "Catfish restaurant", "Water tower", "Train tracks",
+            "Levee", "Sugarcane field", "Antebellum home", "Live oak canopy", "Roadside produce stand"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pit Stops",
+      "collections": [
+        {
+          "code": "FUEL",
+          "title": "Gas Stations & Truck Stops",
+          "freeSpace": true,
+          "words": [
+            "Shell", "Chevron", "Exxon", "Mobil", "BP", "Texaco", "Marathon",
+            "Speedway", "Circle K", "7-Eleven", "Wawa", "Sheetz", "Buc-ee's",
+            "Love's", "Pilot", "Flying J", "QuikTrip", "Casey's", "Sunoco", "Valero",
+            "Phillips 66", "Conoco", "Sinclair", "Kwik Trip", "Maverik", "RaceTrac",
+            "Cumberland Farms"
+          ]
+        },
+        {
+          "code": "EATS",
+          "title": "Fast Food & Roadside Eats",
+          "freeSpace": true,
+          "words": [
+            "McDonald's", "Burger King", "Wendy's", "Taco Bell", "Subway", "KFC",
+            "Chick-fil-A", "Arby's", "Sonic", "Dairy Queen", "In-N-Out", "Whataburger",
+            "Culver's", "Popeyes", "Chipotle", "Starbucks", "Dunkin'", "Cracker Barrel",
+            "Waffle House", "Denny's", "IHOP", "Five Guys", "Jack in the Box",
+            "Carl's Jr / Hardee's", "Domino's", "Panera"
+          ]
+        },
+        {
+          "code": "MART",
+          "title": "Stores & Big-Box",
+          "freeSpace": true,
+          "words": [
+            "Walmart", "Target", "Costco", "Sam's Club", "Home Depot", "Lowe's",
+            "Dollar General", "Dollar Tree", "Family Dollar", "CVS", "Walgreens",
+            "Best Buy", "Kroger", "Publix", "Trader Joe's", "Whole Foods", "IKEA",
+            "Kohl's", "TJ Maxx", "Tractor Supply", "AutoZone", "O'Reilly Auto Parts",
+            "Bass Pro Shops", "Menards", "Aldi", "Big-box parking lot"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kids & Games",
+      "collections": [
+        {
+          "code": "ABCS",
+          "title": "Town-Name Alphabet",
+          "freeSpace": false,
+          "words": [
+            "A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N",
+            "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "A number in a name"
+          ]
+        },
+        {
+          "code": "SKYS",
+          "title": "Weather & Sky",
+          "freeSpace": true,
+          "words": [
+            "Blue sky", "Puffy clouds", "Storm clouds", "Rain", "Rainbow",
+            "Sunbeams through clouds", "Fog", "Sunset colors", "Sunrise", "Sun glare",
+            "Overcast gray", "Crisscrossing contrails", "Rain on the windshield", "Wet road",
+            "Snow on the peaks", "Dust in the air", "Clear to the horizon", "Crescent day moon",
+            "Birds riding the wind", "Heat shimmer", "Wind turbines turning", "Puddle reflection",
+            "Cloud shadow on the hills", "Flags blowing", "Distant rain shower", "Bright full sun"
+          ]
+        },
+        {
+          "code": "DUSK",
+          "title": "Night Drive",
+          "freeSpace": true,
+          "words": [
+            "Oncoming headlights", "Taillights ahead", "City-lights glow", "Neon sign",
+            "Gas station lights", "Streetlight", "Full moon", "Stars", "Truck marker lights",
+            "Radio tower red light", "Lit-up billboard", "Traffic light", "Brake lights",
+            "Fog lights", "Motel VACANCY sign", "Lit-up drive-thru", "Bridge lights",
+            "Reflective road markers", "Animal eyes shining", "Police lights",
+            "Construction lights", "Blinking airplane", "Porch light", "Parking lot lights",
+            "Toll booth lights", "Headlights in the mirror"
+          ]
+        },
+        {
+          "code": "RNBW",
+          "title": "Colors Everywhere",
+          "freeSpace": true,
+          "words": [
+            "Something red", "Something orange", "Something yellow", "Something green",
+            "Something blue", "Something purple", "Something pink", "Something white",
+            "Something black", "Something brown", "Something gray", "Something gold",
+            "Something silver", "Red stop sign", "Yellow school bus", "Green highway sign",
+            "Blue water", "Orange construction barrel", "Red brake lights", "White clouds",
+            "Green traffic light", "Yellow flowers", "Rainbow", "Multicolored sign",
+            "Purple flowers", "Bright teal wall"
+          ]
+        }
+      ]
+    }
+  ]
+}
