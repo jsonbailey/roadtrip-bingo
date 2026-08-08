@@ -188,8 +188,7 @@ body {
   margin-top: 12px;
 }
 .card-form input[type="text"],
-.card-form textarea,
-.card-form select {
+.card-form textarea {
   font-family: inherit;
   font-size: 15px;
   padding: 10px 12px;
@@ -198,16 +197,47 @@ body {
   background: #FFFFFF;
   resize: vertical;
 }
-.card-form select {
-  font-weight: 700;
-  cursor: pointer;
-  appearance: none;
-  -webkit-appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none' stroke='%232B241D' stroke-width='2'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 14px center;
-  background-size: 12px;
-  padding-right: 34px;
+.card-form .code-input {
+  font-weight: 900;
+  font-size: 28px;
+  letter-spacing: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 14px 12px;
+}
+
+/* ---------- collection picker ---------- */
+.collection-group { padding: 0 20px; }
+.collection-group .section-label { margin: 18px 0 8px 2px; }
+.collection-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+@media (min-width: 460px) {
+  .collection-grid { grid-template-columns: 1fr 1fr; }
+}
+.collection-btn {
+  display: block;
+  text-decoration: none;
+  color: var(--ink);
+  background: #FFFFFF;
+  border: 3px solid var(--ink);
+  border-radius: 12px;
+  padding: 13px 15px;
+  box-shadow: 3px 3px 0 rgba(43,36,29,0.25);
+}
+.collection-btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 rgba(43,36,29,0.25); }
+.collection-name { font-weight: 900; font-size: 15px; line-height: 1.2; }
+.collection-meta { font-size: 11px; opacity: 0.7; margin-top: 5px; font-weight: 700; }
+.collection-code {
+  display: inline-block;
+  background: var(--yellow);
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  padding: 1px 6px;
+  letter-spacing: 1.5px;
+  margin-right: 5px;
 }
 .checkbox-label {
   display: flex;

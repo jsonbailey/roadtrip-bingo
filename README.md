@@ -8,37 +8,40 @@ squares as you spot things — right in the browser, no install.
 
 ## How it works
 
-- **Create a board** — start from one of the built-in collections
-  (Vehicles & Traffic, Car Colors, Plants & Animals, Gas Stations,
-  Fast Food, and regional scenery sets like Desert & Southwest, Pacific
-  Northwest, Great Plains, and Mountains) or pick *Custom* and paste your
-  own list of words / things to spot (one per line). Give it a title and
-  choose whether the middle square is a FREE space. You need at least 24
-  words with a FREE space, or 25 without. Enter more than that and every
-  card will pull a random subset, for extra variety.
-- **Get a code** — creating a board generates a short 4-character code
-  (like `K7QX`) plus a shareable link that carries the word list with it.
-- **Share the link** — send it to whoever's playing. Everyone who opens it
-  gets the *same* word list but their *own* randomly shuffled 5x5 card, so
-  no two boards look alike even though the words match.
+- **Choose a collection** — pick from 24 built-in word lists, grouped into
+  *Road Trip Classics*, *On the Road*, *Nature & Wildlife*, *Scenery by
+  Region*, *Pit Stops*, and *Kids & Games* (Vehicles & Traffic, Car Colors,
+  Gas Stations, Fast Food, Desert & Southwest, Pacific Northwest, Mountains,
+  Town-Name Alphabet, and more). Each collection has a fixed, sayable
+  4-letter **code** — `PEAK` for Mountains, `CARS` for Vehicles, `FUEL` for
+  gas stations, and so on.
+- **Share the code** — because the code always maps to the same collection,
+  there's nothing long to send: just tell your car-mates the 4 letters (or
+  share the short link, e.g. `#/play/PEAK`).
+- **Everyone gets their own card** — the same word list, but each device
+  shuffles its own 5x5 layout, so no two boards look alike. Cards pull a
+  random subset when the list has more than 24/25 entries, for extra variety.
 - **Play** — tap a square to check it off, tap again to undo. The app
   watches for any completed row, column, or diagonal and pops up a BINGO
   banner (with a bonus BLACKOUT banner if you fill the whole card).
   Progress is saved on your device, so you can close the tab and pick up
   where you left off.
 
-Because this is a static site (GitHub Pages has no server or database),
-the word list itself travels inside the shareable link rather than living
-on a server — that's what makes the "join with a code" trick work without
-any backend. The link is the thing to share; the 4-character code is
-there as a friendly, sayable label for double-checking everyone's on the
-same board.
+Because the collections are defined in the app itself, a code alone is
+enough to rebuild the exact board on any device — no server or database
+needed, which is what keeps the "join with a code" trick working on a
+static site.
+
+> There's also a hidden **custom board** builder at `#/create/custom` for
+> rolling your own word list. Custom boards have no short code (their word
+> list travels inside the share link instead), so it's tucked away for now.
 
 ### Tech
 
 Plain HTML/CSS/JS, no build step, no dependencies. Everything lives in
-`index.html`, `assets/app.js`, and `assets/style.css`. State (your boards
-and card progress) is kept in `localStorage`.
+`index.html`, `assets/app.js`, `assets/style.css`, and the collection data
+in `assets/presets.json`. State (your boards and card progress) is kept in
+`localStorage`.
 
 ## `legacy/`
 
@@ -51,5 +54,5 @@ screenshots. Kept for reference / design inspiration. See
 ## Deployment
 
 Deploys automatically to GitHub Pages via the workflow in
-`.github/workflows/deploy.yml` on every push to `main` (or the active dev
-branch). No build step — it just publishes the repo root as-is.
+`.github/workflows/deploy.yml` on every push to `main`. No build step — it
+just publishes the repo root as-is.
