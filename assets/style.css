@@ -188,7 +188,8 @@ body {
   margin-top: 12px;
 }
 .card-form input[type="text"],
-.card-form textarea {
+.card-form textarea,
+.card-form select {
   font-family: inherit;
   font-size: 15px;
   padding: 10px 12px;
@@ -196,6 +197,17 @@ body {
   border: 2.5px solid var(--ink);
   background: #FFFFFF;
   resize: vertical;
+}
+.card-form select {
+  font-weight: 700;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none' stroke='%232B241D' stroke-width='2'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 12px;
+  padding-right: 34px;
 }
 .checkbox-label {
   display: flex;

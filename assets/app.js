@@ -1,6 +1,136 @@
 'use strict';
 
 /* ============================================================
+   Preset collections
+   ------------------------------------------------------------
+   Each preset is a ready-made word list players can start from
+   instead of writing their own. Availability of some items
+   (gas/food brands, wildlife) varies by region — that's part of
+   the fun. Every list has at least 25 unique entries so it works
+   with or without a FREE space.
+   ============================================================ */
+const PRESETS = [
+  {
+    title: 'Classic Road Trip',
+    freeSpace: true,
+    words: [
+      'Out-of-state license plate', 'Water tower', 'American flag', 'Billboard',
+      'Semi truck', 'Motorcycle', 'RV / camper', 'Police car', 'Roadwork / cones',
+      'Bridge', 'Tunnel', 'Rest area', 'Barn', 'Cow', 'Horse', 'Church steeple',
+      'Train', 'Airplane overhead', 'Dog in a car', 'Vanity plate',
+      'Produce stand', 'Windmill', 'Roadside diner', 'Hay bales', 'Overpass',
+      'Hitchhiker', 'Broken-down car', 'Flag on a truck'
+    ]
+  },
+  {
+    title: 'Vehicles & Traffic',
+    freeSpace: true,
+    words: [
+      'Semi truck', 'School bus', 'Motorcycle', 'RV / camper', 'Pickup truck',
+      'Convertible', 'Sports car', 'Police car', 'Ambulance', 'Fire truck',
+      'Tow truck', 'Tractor', 'Minivan', 'Jeep', 'Delivery van', 'Tanker truck',
+      'Car pulling a trailer', 'City bus', 'Food truck', 'Classic / vintage car',
+      'Electric car', 'Cement mixer', 'Garbage truck', 'Limousine',
+      'Flatbed truck', 'Dump truck', 'Car with a roof rack', 'Motorhome towing a car'
+    ]
+  },
+  {
+    title: 'Car Colors',
+    freeSpace: true,
+    words: [
+      'Red car', 'Orange car', 'Yellow car', 'Green car', 'Blue car',
+      'Purple car', 'Pink car', 'Black car', 'White car', 'Silver car',
+      'Gray car', 'Brown car', 'Gold car', 'Beige / tan car', 'Maroon car',
+      'Navy blue car', 'Teal car', 'Lime green car', 'Bright red sports car',
+      'Matte black car', 'Two-tone car', 'Camo-wrapped car', 'Custom / wrapped car',
+      'Bronze / copper car', 'Metallic-flake paint'
+    ]
+  },
+  {
+    title: 'Plants & Animals',
+    freeSpace: true,
+    words: [
+      'Cow', 'Horse', 'Sheep', 'Goat', 'Deer', 'Hawk / bird of prey',
+      'Crows on a wire', 'Herd of cattle', 'Butterfly', 'Wildflowers',
+      'Cornfield', 'Sunflowers', 'Cactus', 'Pine trees', 'Palm tree',
+      'Vineyard', 'Pumpkin patch', 'Llama or alpaca', 'Chickens', 'Pig',
+      'Pond with ducks', 'Squirrel', 'Grazing horses', 'Wheat field', 'Oak tree', 'Roadside dog'
+    ]
+  },
+  {
+    title: 'Gas Stations & Truck Stops',
+    freeSpace: true,
+    words: [
+      'Shell', 'Chevron', 'Exxon', 'Mobil', 'BP', 'Texaco', 'Marathon',
+      'Speedway', 'Circle K', '7-Eleven', 'Wawa', 'Sheetz', "Buc-ee's",
+      "Love's", 'Pilot', 'Flying J', 'QuikTrip', "Casey's", 'Sunoco', 'Valero',
+      'Phillips 66', 'Conoco', 'Sinclair', 'Kwik Trip', 'Maverik', 'RaceTrac',
+      'Cumberland Farms'
+    ]
+  },
+  {
+    title: 'Fast Food & Roadside Eats',
+    freeSpace: true,
+    words: [
+      "McDonald's", 'Burger King', "Wendy's", 'Taco Bell', 'Subway', 'KFC',
+      'Chick-fil-A', "Arby's", 'Sonic', 'Dairy Queen', 'In-N-Out', 'Whataburger',
+      "Culver's", 'Popeyes', 'Chipotle', 'Starbucks', "Dunkin'", 'Cracker Barrel',
+      'Waffle House', "Denny's", 'IHOP', 'Five Guys', 'Jack in the Box',
+      "Carl's Jr / Hardee's", "Domino's", 'Panera'
+    ]
+  },
+  {
+    title: 'Desert & Southwest',
+    freeSpace: true,
+    words: [
+      'Saguaro cactus', 'Tumbleweed', 'Red rock formation', 'Sand dunes',
+      'Dry riverbed', 'Mesa or butte', 'Dust devil', 'Joshua tree', 'Lizard',
+      'Windmill', 'Adobe building', '“Next services 100 miles” sign', 'Sagebrush',
+      'Rock arch', 'Dry lake bed', 'Wind turbines', 'Oil pump jack',
+      'Cloudless blue sky', 'Distant mountains', 'Roadrunner', 'Cattle skull',
+      'Border patrol vehicle', 'Gravel pull-off', 'Heat mirage', 'Prickly pear cactus'
+    ]
+  },
+  {
+    title: 'Pacific Northwest',
+    freeSpace: true,
+    words: [
+      'Evergreen forest', 'Fog or mist', 'Waterfall', 'Moss-covered trees',
+      'Snow-capped mountain', 'River rapids', 'Ferry', 'Lighthouse', 'Rain',
+      'Drive-thru coffee stand', 'Logging truck', 'Lake', 'Kayak or canoe',
+      'Bald eagle', 'Covered bridge', 'Ferns', 'Wooden cabin', 'Fishing boat',
+      'Rocky coastline', 'Tulip field', 'Mushrooms', 'Mountain lake', 'Deer',
+      'Cyclist in rain gear', 'Wind turbine on a ridge'
+    ]
+  },
+  {
+    title: 'Great Plains',
+    freeSpace: true,
+    words: [
+      'Grain silo', 'Wind turbine', 'Cattle', 'Round hay bales', 'Cornfield',
+      'Wheat field', 'Red barn', 'Tractor', 'Grain elevator', 'Water tower',
+      'Windmill', 'Road straight to the horizon', 'Big open sky', 'Freight train',
+      'Combine harvester', 'Pronghorn / antelope', 'Grain truck',
+      'Endless fence line', 'Dirt side road', 'Small-town water tower', 'Feedlot',
+      'Roadside diner', 'Sunflower field', 'Pheasant or quail', 'Abandoned farmhouse'
+    ]
+  },
+  {
+    title: 'Mountains',
+    freeSpace: true,
+    words: [
+      'Switchback road', 'Snow-capped peak', 'Pine forest', 'Scenic overlook',
+      'River or creek', 'Waterfall', 'Tunnel', 'Ski resort sign', 'Elk or deer',
+      'Runaway truck ramp', '“Falling rocks” sign', 'Alpine lake',
+      'Wildflower meadow', 'Cabin or lodge', 'Chairlift', 'Trailhead sign',
+      'Steep grade sign', 'Cyclist climbing', 'Fog in the valley',
+      'Bridge over a gorge', 'Campground sign', 'Boulder field', 'Evergreen slope',
+      'Mountain goat or bighorn', 'Waterfall pull-off'
+    ]
+  }
+];
+
+/* ============================================================
    Storage
    ============================================================ */
 const CHARSET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // no 0/O/1/I to avoid mix-ups
@@ -210,6 +340,30 @@ function renderCreate() {
   const counter = h('div', { class: 'counter' }, '');
   const errorBox = h('div', { class: 'error', style: 'display:none' });
 
+  const presetSelect = h('select', { id: 'c-preset' },
+    h('option', { value: '' }, 'Custom — write your own'),
+    ...PRESETS.map((p, i) => h('option', { value: String(i) }, p.title))
+  );
+
+  // Remember whether the title was typed by the user, so switching
+  // presets can safely refresh an auto-filled title but never clobber
+  // one they wrote themselves.
+  let titleManual = false;
+  titleInput.addEventListener('input', () => { titleManual = true; });
+
+  presetSelect.addEventListener('change', () => {
+    if (presetSelect.value === '') return; // "Custom" — leave their text alone
+    const p = PRESETS[Number(presetSelect.value)];
+    if (wordsArea.value.trim() && !confirm('Replace the current word list with “' + p.title + '”?')) {
+      presetSelect.value = ''; // they backed out — restore Custom
+      return;
+    }
+    if (!titleManual) titleInput.value = p.title;
+    wordsArea.value = p.words.join('\n');
+    freeCheck.checked = p.freeSpace;
+    updateCounter();
+  });
+
   function updateCounter() {
     const words = parseWords(wordsArea.value);
     const need = requiredCount(freeCheck.checked);
@@ -239,6 +393,8 @@ function renderCreate() {
       location.hash = '#/board/' + seed;
     }
   },
+    h('label', { for: 'c-preset' }, 'Start from a collection'),
+    presetSelect,
     h('label', { for: 'c-title' }, 'Board Title'),
     titleInput,
     h('label', { class: 'checkbox-label' }, freeCheck, 'Include a FREE center space'),

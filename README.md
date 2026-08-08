@@ -8,11 +8,14 @@ squares as you spot things — right in the browser, no install.
 
 ## How it works
 
-- **Create a board** — give it a title, paste in your own list of words
-  or things to spot (one per line), and choose whether the middle square
-  is a FREE space. You need at least 24 words with a FREE space, or 25
-  without. Enter more than that and every card will pull a random subset,
-  for extra variety.
+- **Create a board** — start from one of the built-in collections
+  (Vehicles & Traffic, Car Colors, Plants & Animals, Gas Stations,
+  Fast Food, and regional scenery sets like Desert & Southwest, Pacific
+  Northwest, Great Plains, and Mountains) or pick *Custom* and paste your
+  own list of words / things to spot (one per line). Give it a title and
+  choose whether the middle square is a FREE space. You need at least 24
+  words with a FREE space, or 25 without. Enter more than that and every
+  card will pull a random subset, for extra variety.
 - **Get a code** — creating a board generates a short 4-character code
   (like `K7QX`) plus a shareable link that carries the word list with it.
 - **Share the link** — send it to whoever's playing. Everyone who opens it
