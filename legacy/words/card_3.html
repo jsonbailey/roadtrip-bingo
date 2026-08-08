@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+* { box-sizing: border-box; margin:0; padding:0; }
+html,body { width:390px; height:844px; overflow:hidden; }
+body {
+  width:390px; height:844px;
+  background:#FFF8ED;
+  background-image:
+    radial-gradient(circle 2.5px at 30px 760px, rgba(255,111,89,0.20) 99%, transparent),
+    radial-gradient(circle 2.5px at 355px 745px, rgba(58,174,216,0.20) 99%, transparent),
+    radial-gradient(circle 2.5px at 20px 800px, rgba(255,196,77,0.25) 99%, transparent);
+  font-family: 'Trebuchet MS', 'Verdana', Arial, sans-serif;
+  color:#2B241D;
+  display:flex;
+  flex-direction:column;
+  position:relative;
+}
+
+.topband{
+  background:#FF6F59;
+  padding:24px 20px 18px 20px;
+  text-align:center;
+  border-bottom:5px solid #2B241D;
+  position:relative;
+}
+.topband::after{
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:-9px;
+  height:9px;
+  background-image: linear-gradient(135deg, #FF6F59 25%, transparent 25%),
+                     linear-gradient(225deg, #FF6F59 25%, transparent 25%);
+  background-size: 18px 18px;
+  background-position: 0 0;
+}
+.title{
+  font-weight:900;
+  font-size:23px;
+  letter-spacing:0.5px;
+  color:#FFFFFF;
+  text-shadow: 1.5px 1.5px 0 #2B241D;
+  line-height:1.15;
+}
+.title .accent{
+  color:#FFE45E;
+  text-shadow: 1.5px 1.5px 0 #2B241D;
+}
+.subtitle{
+  margin-top:7px;
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#FFF3D6;
+  font-weight:700;
+}
+
+.rulebubble{
+  margin:24px 22px 4px 22px;
+  background:#FFE45E;
+  border:3px solid #2B241D;
+  border-radius:16px;
+  padding:10px 14px;
+  position:relative;
+  text-align:center;
+  box-shadow: 3px 3px 0 rgba(43,36,29,0.25);
+}
+.rulebubble .rule-main{
+  font-weight:900;
+  font-size:12.5px;
+  letter-spacing:0.2px;
+  color:#2B241D;
+  line-height:1.3;
+}
+.rulebubble .rule-main b{
+  color:#D64545;
+}
+
+.playerbar{
+  margin:16px 22px 0 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.playerbar .label{
+  font-size:9px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#2B241D;
+  opacity:0.55;
+  font-weight:700;
+}
+.playerbar .name{
+  font-weight:900;
+  font-size:15px;
+  letter-spacing:0.5px;
+  color:#3AAED8;
+  text-shadow: 1px 1px 0 rgba(43,36,29,0.15);
+}
+
+.grid{
+  flex:1;
+  margin:10px 16px 0 16px;
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  grid-template-rows:repeat(5,1fr);
+  gap:6px;
+}
+.cell{
+  border:2.5px solid #2B241D;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:3px 3px;
+  position:relative;
+  box-shadow: 2px 2px 0 rgba(43,36,29,0.22);
+}
+.cell span{
+  font-size:11px;
+  line-height:1.1;
+  font-weight:800;
+  color:#2B241D;
+}
+.cell.free{
+  background:#6C5CE7;
+  border-color:#2B241D;
+}
+.cell.free .medallion{
+  width:100%; height:100%;
+  border-radius:50%;
+  border:3px solid #FFE45E;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+}
+.cell.free .star{
+  font-size:15px;
+  line-height:1;
+  margin-bottom:2px;
+  color:#FFE45E;
+}
+.cell.free span{
+  color:#FFFFFF;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.footer{
+  margin:12px 20px 20px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.footer .stamp{
+  font-size:8.5px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color:#2B241D;
+  opacity:0.55;
+  font-weight:700;
+}
+.footer .cardno{
+  font-weight:900;
+  font-size:11px;
+  letter-spacing:0.5px;
+  color:#FFFFFF;
+  background:#FF6F59;
+  border:2.5px solid #2B241D;
+  border-radius:8px;
+  padding:3px 10px;
+}
+</style>
+</head>
+<body>
+  <div class="topband">
+    <div class="title">ROAD TRIP <span class="accent">WORD</span> BINGO</div>
+    <div class="subtitle">Things We Yell From The Backseat</div>
+  </div>
+  <div class="rulebubble">
+    <div class="rule-main">Only counts if <b>SOMEONE ELSE</b> says it &mdash;<br>not you!</div>
+  </div>
+  <div class="playerbar">
+    <div class="label">Card holder</div>
+    <div class="name">RIDER THREE</div>
+  </div>
+  <div class="grid">
+    <div class="cell" style="background:#FFFFFF"><span>Finally</span></div>
+<div class="cell" style="background:#FFE8D6"><span>Photo</span></div>
+<div class="cell" style="background:#DCF3F5"><span>Look!</span></div>
+<div class="cell" style="background:#FFF3B0"><span>Careful</span></div>
+<div class="cell" style="background:#FFFFFF"><span>Whoa</span></div>
+<div class="cell" style="background:#FFE8D6"><span>Slow down</span></div>
+<div class="cell" style="background:#DCF3F5"><span>Beautiful</span></div>
+<div class="cell" style="background:#FFF3B0"><span>Seriously?</span></div>
+<div class="cell" style="background:#FFFFFF"><span>Gas</span></div>
+<div class="cell" style="background:#FFE8D6"><span>Turn</span></div>
+<div class="cell" style="background:#DCF3F5"><span>Stop</span></div>
+<div class="cell" style="background:#FFF3B0"><span>Music</span></div>
+<div class="cell free"><div class="medallion"><div class="star">&#9733;</div><span>FREE</span></div></div>
+<div class="cell" style="background:#FFFFFF"><span>Bathroom</span></div>
+<div class="cell" style="background:#FFE8D6"><span>Sunscreen</span></div>
+<div class="cell" style="background:#DCF3F5"><span>Hungry</span></div>
+<div class="cell" style="background:#FFF3B0"><span>Signal</span></div>
+<div class="cell" style="background:#FFFFFF"><span>Snacks</span></div>
+<div class="cell" style="background:#FFE8D6"><span>Lost</span></div>
+<div class="cell" style="background:#DCF3F5"><span>Snoring</span></div>
+<div class="cell" style="background:#FFF3B0"><span>Wow</span></div>
+<div class="cell" style="background:#FFFFFF"><span>Hot</span></div>
+<div class="cell" style="background:#FFE8D6"><span>Almost</span></div>
+<div class="cell" style="background:#DCF3F5"><span>Water</span></div>
+<div class="cell" style="background:#FFF3B0"><span>Tired</span></div>
+  </div>
+  <div class="footer">
+    <div class="stamp">Shout it, don't say it yourself</div>
+    <div class="cardno">No. 03</div>
+  </div>
+</body>
+</html>
