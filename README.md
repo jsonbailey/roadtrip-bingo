@@ -12,11 +12,11 @@ Scan with your phone's camera to open it:
 
 ## How it works
 
-- **Choose a collection** — pick from 24 built-in word lists, grouped into
+- **Choose a collection** — pick from 25 built-in word lists, grouped into
   *Road Trip Classics*, *On the Road*, *Nature & Wildlife*, *Scenery by
-  Region*, *Pit Stops*, and *Kids & Games* (Vehicles & Traffic, Car Colors,
-  Gas Stations, Fast Food, Desert & Southwest, Pacific Northwest, Mountains,
-  Town-Name Alphabet, and more). Each collection has a fixed, sayable
+  Region*, *Pit Stops*, *Kids & Games*, and *Slang Bingo* (Vehicles & Traffic,
+  Car Colors, Gas Stations, Fast Food, Desert & Southwest, Pacific Northwest,
+  Mountains, Town-Name Alphabet, Today's Slang, and more). Each collection has a fixed, sayable
   4-letter **code** — `PEAK` for Mountains, `CARS` for Vehicles, `FUEL` for
   gas stations, and so on.
 - **Share the code** — because the code always maps to the same collection,
