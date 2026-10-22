@@ -335,6 +335,36 @@
           ]
         }
       ]
+    },
+    {
+      "name": "Slang Bingo",
+      "collections": [
+        {
+          "code": "RADS",
+          "title": "90s Slang",
+          "freeSpace": true,
+          "words": [
+            "Radical", "Tubular", "Totally", "As if!", "Whatever", "Talk to the hand",
+            "Da bomb", "Phat", "Booyah", "Wassup", "Not!", "My bad", "Cowabunga",
+            "Psych!", "Righteous", "Gnarly", "Bogus", "Cool beans", "Most excellent",
+            "Don't have a cow", "Eat my shorts", "All that and a bag of chips",
+            "Take a chill pill", "Mad props", "Kickin' it", "Wicked", "Hook me up",
+            "Jinx"
+          ]
+        },
+        {
+          "code": "RIZZ",
+          "title": "Today's Slang",
+          "freeSpace": true,
+          "words": [
+            "No cap", "Slay", "Vibe check", "Lowkey", "Highkey", "Bussin'", "Rizz",
+            "Delulu", "Main character", "It's giving...", "Hits different", "Glow-up",
+            "GOAT", "Fire", "Yeet", "Salty", "Aura", "Touch grass", "Locked in",
+            "I'm cooked", "Sheesh", "Chef's kiss", "In my ___ era", "Understood the assignment",
+            "Periodt", "Big yikes", "Valid", "Mid"
+          ]
+        }
+      ]
     }
   ]
 }
