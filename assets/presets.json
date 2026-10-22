@@ -340,19 +340,6 @@
       "name": "Slang Bingo",
       "collections": [
         {
-          "code": "RADS",
-          "title": "90s Slang",
-          "freeSpace": true,
-          "words": [
-            "Radical", "Tubular", "Totally", "As if!", "Whatever", "Talk to the hand",
-            "Da bomb", "Phat", "Booyah", "Wassup", "Not!", "My bad", "Cowabunga",
-            "Psych!", "Righteous", "Gnarly", "Bogus", "Cool beans", "Most excellent",
-            "Don't have a cow", "Eat my shorts", "All that and a bag of chips",
-            "Take a chill pill", "Mad props", "Kickin' it", "Wicked", "Hook me up",
-            "Jinx"
-          ]
-        },
-        {
           "code": "RIZZ",
           "title": "Today's Slang",
           "freeSpace": true,
