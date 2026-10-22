@@ -6,6 +6,10 @@ squares as you spot things — right in the browser, no install.
 
 **Live app: https://jsonbailey.github.io/roadtrip-bingo/**
 
+Scan with your phone's camera to open it:
+
+<img src="docs/qr-live-app.png" alt="QR code linking to the live Road Trip Bingo app" width="200">
+
 ## How it works
 
 - **Choose a collection** — pick from 24 built-in word lists, grouped into
